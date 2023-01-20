@@ -10,9 +10,9 @@ const SDKHead: React.FC = () => {
 	return (
 		<Head>
 			<>
-				<script src={`http://localhost:33557/remote-slot.js`} />
+				<script src={`http://localhost:3001/remote-slot.js`} />
 				{sdkData.components.map((c) => (
-					<script key={c} src={`http://localhost:33557/${c}.js`} />
+					<script key={c} src={`http://localhost:3001/${c}.js`} />
 				))}
 			</>
 		</Head>

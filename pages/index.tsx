@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 
+import { Remote } from '../components/Remote';
 import SDKHead from '../components/SDKHead';
 import { createGetStaticProps, withSDKData } from '../components/withSDK';
 
