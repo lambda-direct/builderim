@@ -7,12 +7,18 @@ import { DataContext } from './withSDK';
 const SDKHead: React.FC = () => {
 	const sdkData = useContext(DataContext);
 
+	// TODO: apply "DRY" to code below
+	const componentsMap = {
+		TEXT: 'remote-text',
+		IMAGE: 'remote-image'
+	};
+
 	return (
 		<Head>
 			<>
 				<script src={`http://localhost:3001/remote-slot.js`} />
 				{sdkData.components.map((c) => (
-					<script key={c} src={`http://localhost:3001/${c}.js`} />
+					<script key={componentsMap[c]} src={`http://localhost:3001/${componentsMap[c]}.js`} />
 				))}
 			</>
 		</Head>

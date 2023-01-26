@@ -1,3 +1,4 @@
+// TODO: need to rework this component according to new BE contract
 class RemoteInput extends HTMLElement {
 	constructor() {
 		super();

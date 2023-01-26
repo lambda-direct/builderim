@@ -7,7 +7,8 @@ export interface Props {
 }
 
 export const Remote: React.FC<Props> = ({ id }) => {
-	const { data } = useContext(DataContext);
+	const { data: { blocks } } = useContext(DataContext);
+	const slotData = blocks.find(item => String(item.id) === id);
 
-	return createElement('remote-slot', { data: JSON.stringify(data[id]) });
+	return createElement('remote-slot', { data: JSON.stringify(slotData) });
 };

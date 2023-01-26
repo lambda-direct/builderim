@@ -13,9 +13,16 @@ class RemoteSlot extends HTMLElement {
 		}
 
 		const value = JSON.parse(data.value);
-		// Create web component with name from value.type and fields from data.payload
-		const component = document.createElement(value.type);
-		const fields = value.payload;
+		// Create web component with name from value.type and fields from data.content
+		// TODO: apply "DRY" to code below
+		const elementTypeMap = {
+			TEXT: 'remote-text',
+			IMAGE: 'remote-image'
+		};
+		const component = document.createElement(elementTypeMap[value.type]);
+
+		const fields = value.content;
+
 		Object.entries(fields).forEach(([key, value]) => {
 			component.setAttribute(key, value);
 		});
