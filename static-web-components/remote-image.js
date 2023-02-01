@@ -1,34 +1,18 @@
-class RemoteImage extends HTMLElement {
-	constructor() {
-		super();
-
-		this.element = RemoteImage.template();
-		const template = document.createElement('template');
-
-		template.content.appendChild(this.element);
-		template.content.appendChild(this.getStyles());
-
-		this.attachShadow({ mode: 'open' });
-		this.shadowRoot.appendChild(document.importNode(template.content, true));
+class RemoteImage {
+	constructor(content) {
+		this.content = content;
 	}
 
-	connectedCallback() {
-		const { value: url } = this.attributes.getNamedItem('url');
-		this.shadowRoot.querySelector('img').src = url;
+	createElement() {
+		const element = document.createElement('img');
+		element.src = this.content.url
+		element.style.cssText = 'width: 100%; height: auto;'
+		return element
 	}
 
-	getStyles(additionalStyles = '') {
-		const css = 'img { width: 100%; height: auto; } ' + additionalStyles;
-
-		const style = document.createElement('style');
-		style.appendChild(document.createTextNode(css));
-
-		return style
-	}
-
-	static template() {
-		return document.createElement('img');
+	getElement() {
+		return this.createElement()
 	}
 }
 
-customElements.define('remote-image', RemoteImage);
+export default RemoteImage

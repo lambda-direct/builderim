@@ -1,23 +1,16 @@
-class RemoteText extends HTMLElement {
-	constructor() {
-		super();
-		this.element = RemoteText.template();
-
-		const template = document.createElement('template');
-		template.content.appendChild(this.element);
-
-		this.attachShadow({ mode: 'open' });
-		this.shadowRoot.appendChild(document.importNode(template.content, true));
+class RemoteText {
+	constructor(content) {
+		this.content = content;
 	}
 
-	connectedCallback() {
-		const { value: text } = this.attributes.getNamedItem('text');
-		this.shadowRoot.querySelector('span').textContent = text;
+	createElement() {
+		const element = document.createTextNode(this.content.text);
+		return document.importNode(element, true)
 	}
 
-	static template() {
-		return document.createElement('span');
+	getElement() {
+		return this.createElement()
 	}
 }
 
-customElements.define('remote-text', RemoteText);
+export default RemoteText
