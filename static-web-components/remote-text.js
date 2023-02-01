@@ -11,7 +11,6 @@ class RemoteText extends HTMLElement {
 	}
 
 	connectedCallback() {
-		console.log('connectedCallback RemoteText')
 		const { value: text } = this.attributes.getNamedItem('text');
 		this.shadowRoot.querySelector('span').textContent = text;
 	}
