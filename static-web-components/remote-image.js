@@ -1,32 +1,44 @@
 class RemoteImage extends HTMLElement {
 	constructor() {
 		super();
-
-		this.element = RemoteImage.template();
-		const template = document.createElement('template');
-
-		template.content.appendChild(this.element);
-		template.content.appendChild(this.getStyles());
+		this.element = this.createElement();
 
 		this.attachShadow({ mode: 'open' });
-		this.shadowRoot.appendChild(document.importNode(template.content, true));
+		this.shadowRoot.appendChild(this.element);
 	}
 
 	connectedCallback() {
-		const { value: url } = this.attributes.getNamedItem('url');
-		this.shadowRoot.querySelector('img').src = url;
+		this.setData();
+		this.setStyles();
+		this.setAttributes();
+		this.setContent();
 	}
 
-	getStyles(additionalStyles = '') {
-		const css = 'img { width: 100%; height: auto; } ' + additionalStyles;
-
-		const style = document.createElement('style');
-		style.appendChild(document.createTextNode(css));
-
-		return style
+	setData() {
+		this.data = JSON.parse(this.attributes.getNamedItem('data').value);
 	}
 
-	static template() {
+	setStyles() {
+		if (Object.keys(this.data.styles).length) {
+			Object.entries(this.data.styles).forEach(([key, value]) => {
+				this.element.style[key] = value;
+			})
+		}
+	}
+
+	setAttributes() {
+		if (Object.keys(this.data.attributes).length) {
+			Object.entries(this.data.attributes).forEach(([key, value]) => {
+				this.element.setAttribute(key, value);
+			})
+		}
+	}
+
+	setContent() {
+		this.element.src = this.data.content.url
+	}
+
+	createElement() {
 		return document.createElement('img');
 	}
 }

@@ -20,12 +20,27 @@ class RemoteSlot extends HTMLElement {
 			IMAGE: 'remote-image'
 		};
 		const component = document.createElement(elementTypeMap[value.type]);
+		component.setAttribute('data', JSON.stringify({
+			content: value.content,
+			styles: value.styles,
+			attributes: value.attributes
+		}));
 
-		const fields = value.content;
-
-		Object.entries(fields).forEach(([key, value]) => {
-			component.setAttribute(key, value);
-		});
+		// const fields = value.content;
+		// const styles = value.styles;
+		// const attributes = value.attributes;
+		//
+		// Object.entries(fields).forEach(([key, value]) => {
+		// 	component.setAttribute(key, value);
+		// });
+		//
+		// Object.entries(styles).forEach(([key, value]) => {
+		// 	component.style[key] = value;
+		// });
+		//
+		// Object.entries(attributes).forEach(([key, value]) => {
+		// 	component.setAttribute(key, value);
+		// });
 
 		this.shadowRoot.appendChild(component);
 	}

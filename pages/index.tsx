@@ -33,7 +33,6 @@ const Home: NextPage = () => {
 						<div className="card__description">
 							<Remote id="6" />
 							<br/>
-							<br/>
 							<Remote id="7" />
 						</div>
 					</div>
@@ -45,4 +44,4 @@ const Home: NextPage = () => {
 
 export default withSDKData(Home);
 
-export const getStaticProps = createGetStaticProps('1.nXXKiiQumf');
+export const getStaticProps = createGetStaticProps('1.Ykz6s1VxjV');
