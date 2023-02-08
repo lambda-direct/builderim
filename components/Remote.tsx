@@ -1,26 +1,27 @@
-import { createElement, useContext, useEffect, useRef } from 'react';
+import { createElement, useEffect, useRef } from 'react';
 
-import { DataContext } from './withSDK';
+import { IRemoteResponseBlockItem } from './withSDK';
 
-import RemoteSlot from '../static-web-components/remote-slot';
+// @ts-ignore
+import RemoteSlot from 'brushhh-core';
+// import RemoteSlot from '../static-web-components/remote-slot';
 
 export interface Props {
 	id: string;
+	data: IRemoteResponseBlockItem | undefined
 }
 
-export const Remote: React.FC<Props> = ({ id }) => {
+export const Remote: React.FC<Props> = ({ id, data }) => {
 	const effectRan = useRef(false);
-	const { data: { blocks } } = useContext(DataContext);
-	const slotData = blocks.find(item => String(item.id) === id);
 
 	useEffect(() => {
 		if (!effectRan.current) {
-			new RemoteSlot(slotData)
+			new RemoteSlot(data)
 		}
 		return () => {
 			effectRan.current = true
 		}
 	}, [])
 
-	return createElement('div', { 'remote-id': slotData.id });
+	return createElement('div', { 'remote-id': id });
 };

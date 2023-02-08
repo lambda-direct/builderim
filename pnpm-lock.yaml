@@ -6,6 +6,7 @@ specifiers:
   '@types/react': 18.0.9
   '@types/react-dom': 18.0.4
   axios: ^0.27.2
+  brushhh-core: https://github.com/mesa4/brushhh-core
   eslint: 8.16.0
   eslint-config-next: 12.1.6
   next: 12.1.6
@@ -17,6 +18,7 @@ specifiers:
 
 dependencies:
   axios: 0.27.2
+  brushhh-core: github.com/mesa4/brushhh-core/ae4ef1229da3269302bb067cb8de2ca9995cb908
   next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
@@ -2648,3 +2650,9 @@ packages:
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
     dev: true
+
+  github.com/mesa4/brushhh-core/ae4ef1229da3269302bb067cb8de2ca9995cb908:
+    resolution: {tarball: https://codeload.github.com/mesa4/brushhh-core/tar.gz/ae4ef1229da3269302bb067cb8de2ca9995cb908}
+    name: brushhh-core
+    version: 1.0.0
+    dev: false
