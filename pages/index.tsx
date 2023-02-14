@@ -44,4 +44,4 @@ const Home: NextPage = () => {
 
 export default withSDKData(Home);
 
-export const getStaticProps = createGetStaticProps('1.Ykz6s1VxjV');
+export const getStaticProps = createGetStaticProps('1.Qk99GywNOM');

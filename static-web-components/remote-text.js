@@ -19,7 +19,7 @@ class RemoteText extends HTMLElement {
 	}
 
 	setStyles() {
-		if (Object.keys(this.data.styles).length) {
+		if (this.data.styles && Object.keys(this.data.styles).length) {
 			Object.entries(this.data.styles).forEach(([key, value]) => {
 				this.element.style[key] = value;
 			})
@@ -27,7 +27,7 @@ class RemoteText extends HTMLElement {
 	}
 
 	setAttributes() {
-		if (Object.keys(this.data.attributes).length) {
+		if (this.data.attributes && Object.keys(this.data.attributes).length) {
 			Object.entries(this.data.attributes).forEach(([key, value]) => {
 				this.element.setAttribute(key, value);
 			})
