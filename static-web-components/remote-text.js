@@ -8,10 +8,17 @@ class RemoteText extends HTMLElement {
 	}
 
 	connectedCallback() {
+		this.preventInheritStyles();
 		this.setData();
 		this.setStyles();
 		this.setAttributes();
 		this.setContent();
+	}
+
+	preventInheritStyles() {
+		const style = document.createElement('style');
+		style.textContent = `:host { all: initial; }`;
+		this.shadowRoot.appendChild(style);
 	}
 
 	setData() {
@@ -22,7 +29,7 @@ class RemoteText extends HTMLElement {
 		if (this.data.styles && Object.keys(this.data.styles).length) {
 			Object.entries(this.data.styles).forEach(([key, value]) => {
 				this.element.style[key] = value;
-			})
+			});
 		}
 	}
 
@@ -30,12 +37,12 @@ class RemoteText extends HTMLElement {
 		if (this.data.attributes && Object.keys(this.data.attributes).length) {
 			Object.entries(this.data.attributes).forEach(([key, value]) => {
 				this.element.setAttribute(key, value);
-			})
+			});
 		}
 	}
 
 	setContent() {
-		this.element.textContent = this.data.content.text
+		this.element.textContent = this.data.content.text;
 	}
 
 	createElement() {

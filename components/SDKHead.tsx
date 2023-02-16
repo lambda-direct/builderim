@@ -15,10 +15,16 @@ const SDKHead: React.FC = () => {
 
 	return (
 		<Head>
+			{/*<>*/}
+			{/*	<script src={`https://sitebuilder.fly.dev/static/remote-slot.js`} />*/}
+			{/*	{sdkData.components.map((c) => (*/}
+			{/*		<script key={componentsMap[c]} src={`https://sitebuilder.fly.dev/static/${componentsMap[c]}.js`} />*/}
+			{/*	))}*/}
+			{/*</>*/}
 			<>
-				<script src={`https://sitebuilder.fly.dev/static/remote-slot.js`} />
+				<script src={`http://localhost:3001/remote-slot.js`} />
 				{sdkData.components.map((c) => (
-					<script key={componentsMap[c]} src={`https://sitebuilder.fly.dev/static/${componentsMap[c]}.js`} />
+					<script key={componentsMap[c]} src={`http://localhost:3001/${componentsMap[c]}.js`} />
 				))}
 			</>
 		</Head>

@@ -8,10 +8,17 @@ class RemoteImage extends HTMLElement {
 	}
 
 	connectedCallback() {
+		this.preventInheritStyles();
 		this.setData();
 		this.setStyles();
 		this.setAttributes();
 		this.setContent();
+	}
+
+	preventInheritStyles() {
+		const styles = document.createElement('style');
+		styles.innerHTML = `:host { all: initial }`;
+		this.shadowRoot.appendChild(styles)
 	}
 
 	setData() {
